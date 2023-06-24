@@ -1,26 +1,30 @@
 import React from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+export default class home extends React.Component{
+	
+	constructor(){
+		super();
+		this.state = {
+			clicker: null
+		};
+	}
+	
+	render(){
+		console.log(this.state)
+		let redVariable = '';
+		if(this.state.clicker == 'red') redVariable = 'selected';
+		let yellowVariable = '';
+		if(this.state.clicker == 'yellow') yellowVariable = 'selected';
+		let greenVariable = '';
+		if(this.state.clicker == 'green') greenVariable = 'selected';
 
-//create your first component
-const Home = () => {
-	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		return <div>
+			<div id="trafficColors"></div>
+			<div id="boxbox">
+				<div className={"red light "+redVariable} onClick={() => this.setState({ clicker: 'red'})}></div>
+				<div className={"yellow light "+yellowVariable} onClick={() => this.setState({ clicker: 'yellow'})}></div>
+				<div className={"green light "+greenVariable} onClick={() => this.setState({ clicker: 'green'})}></div>
+			</div>
 		</div>
-	);
-};
-
-export default Home;
+	}
+}
